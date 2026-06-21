@@ -48,7 +48,7 @@ classDiagram
         +PointerBlock block
     }
     class PointerBlock {
-        +long[] pointerList
+        +long[""] pointerList
         +PointerBlock link
         -int index
         -int size
@@ -58,7 +58,7 @@ classDiagram
         +readIt(string formatFile) string[,]
     }
     class Program {
-        +Main(string[] args)
+        +Main(string[""] args)
     }
     IndexStructure --> BinaryTreeNode
     BinaryTreeNode --> PointerBlock
@@ -74,13 +74,13 @@ flowchart TD
     B --> C1[Locate target field position]
     C1 ~~~ C2[and total record size]
     C2 --> D[Open binary data file]
-    D --> E[Seek to first record's key field]
+    D --> E["Seek to first record's key field"]
     E --> F[Read key value]
     F --> G[Create IndexStructure with root node]
     G --> H[Seek past rest of record]
-    H --> I{More records?}
+    H --> I{"More records?"}
     I -->|Yes| J[Read next key value]
-    J --> K[IndexStructure.Add(key, position)]
+    J --> K["IndexStructure.Add(key, position)"]
     K --> H
     I -->|No| L[Serialize IndexStructure to output file]
 ```
