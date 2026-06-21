@@ -71,8 +71,9 @@ classDiagram
 ```mermaid
 flowchart TD
     A[Parse command-line args] --> B[Read format file]
-    B --> C[Locate target field position<br>and total record size]
-    C --> D[Open binary data file]
+    B --> C1[Locate target field position]
+    C1 ~~~ C2[and total record size]
+    C2 --> D[Open binary data file]
     D --> E[Seek to first record's key field]
     E --> F[Read key value]
     F --> G[Create IndexStructure with root node]
